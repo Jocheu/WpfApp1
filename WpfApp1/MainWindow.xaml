@@ -1,0 +1,48 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <StackPanel DockPanel.Dock ="Bottom" Background ="ForestGreen">
+                <Button Click="Restart_Click" Content="Restart" FontSize="20" Height="50" Width="100" VerticalAlignment="Center" HorizontalAlignment="Center" Background="White"/>
+            </StackPanel>
+            <Border BorderBrush="White" BorderThickness="5">
+                <Grid x:Name="MyGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                        <RowDefinition Height="33*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                        <ColumnDefinition Width="33*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="BorderBrush" Value="#FF423277"/>
+                            <Setter Property="FontSize" Value="30"/>
+                        </Style>
+                        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+                    </Grid.Resources>
+                    <Button x:Name="TopXLeft" Click="Button_Click" Grid.Row="0" Grid.Column="0"/>
+                    <Button x:Name="TopXMid" Click="Button_Click" Grid.Row="0" Grid.Column="1"/>
+                    <Button x:Name="TopXRight" Click="Button_Click" Grid.Row="0" Grid.Column="2"/>
+                    <Button x:Name="CenterXLeft" Click="Button_Click" Grid.Row="1" Grid.Column="0"/>
+                    <Button x:Name="CenterXMid" Click="Button_Click" Grid.Row="1" Grid.Column="1"/>
+                    <Button x:Name="CenterXRight" Click="Button_Click" Grid.Row="1" Grid.Column="2"/>
+                    <Button x:Name="BottomXLeft" Click="Button_Click" Grid.Row="2" Grid.Column="0"/>
+                    <Button x:Name="BottomXMid" Click="Button_Click" Grid.Row="2" Grid.Column="1"/>
+                    <Button x:Name="BottomXRight" Click="Button_Click" Grid.Row="2" Grid.Column="2"/>
+                    <Label Grid.Row="1" Grid.ColumnSpan="3" Background="Aquamarine" Foreground="WhiteSmoke" Content="Game Won" FontSize="30" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding Path=HasWon, Converter={StaticResource BoolToVisibility}}"/>
+                </Grid>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>
